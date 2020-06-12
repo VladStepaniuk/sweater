@@ -1,5 +1,5 @@
 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Edit Message
+    Message Editor
 </a>
 <div class="collapse <#if message??>show</#if>" id="collapseExample">
     <div class="form-group mt-3">
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <input type="text" name="tag" class="form-control ${(tagError??)?string('is-invalid','')}"
-                       value="<#if message??>${message.text}</#if>" placeholder="Тэг" />
+                       value="<#if message??>${message.tag}</#if>" placeholder="Тэг" />
                 <#if tagError??>
                     <div class="invalid-feedback">
                         ${tagError}
