@@ -9,7 +9,7 @@
         <a class="btn btn-info" href="/user/subscribe/${userChannel.id}">Subscribe</a>
         </#if>
     </#if>
-    <h3>${useChannel.username}</h3>
+    <h3>${userChannel.username}</h3>
     <div class="row">
         <div class="col">
             <div class="card">

@@ -18,12 +18,13 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepo;
     private final MailSender mailSender;
+    private final PasswordEncoder passwordEncoder;
 
 
-    public UserService(UserRepository userRepo, MailSender mailSender){
+    public UserService(UserRepository userRepo, MailSender mailSender, PasswordEncoder passwordEncoder){
         this.userRepo=userRepo;
         this.mailSender=mailSender;
-
+        this.passwordEncoder=passwordEncoder;
     }
 
     @Override
@@ -44,6 +45,7 @@ public class UserService implements UserDetailsService {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
 
         sendMessage(user);
